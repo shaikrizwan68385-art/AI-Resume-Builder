@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 5% 96%;
+    --foreground: 0 0% 7%;
+    --primary: 245 58% 51%;
+    --primary-foreground: 0 0% 100%;
+  }
+
+  body {
+    @apply bg-background text-text selection:bg-primary/10;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-bold tracking-tight text-text;
+  }
+
+  p {
+    @apply text-lg max-w-[720px];
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-none font-medium transition-all duration-200 ease-in-out;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply border border-primary text-primary bg-transparent hover:bg-primary/5 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .card {
+    @apply bg-white border border-black/5 p-24 transition-all duration-200;
+  }
+}
+
+@media print {
+  @page {
+    margin: 15mm;
+    size: A4;
+  }
+
+  body {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Force white background and black text for print */
+  .bg-background,
+  .bg-white,
+  .bg-background\/50 {
+    background: white !important;
+  }
+
+  /* Avoid splitting sections across pages */
+  section,
+  .break-inside-avoid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Remove navigation and buttons */
+  nav,
+  .btn,
+  button {
+    display: none !important;
+  }
+}
